@@ -6,11 +6,11 @@
 ## 1.用法
 Android Studio使用依赖:
 ```java
-	compile 'keviny-mob:banner:1.0.0'
+compile 'keviny-mob:banner:1.0.0'
 ```
 或者下载工程后使用
 ```java
-    compile project(':banner')
+compile project(':banner')
 ```
 
 ## 2.功能
@@ -57,29 +57,29 @@ Android Studio使用依赖:
 
 ### 1.在布局文件中加入BannerViewPager
 ```xml
-	<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/viewPagerContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/viewPagerContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-        <kevinmob.banner.BannerViewPager
-            android:id="@+id/bvp"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="30dp"
-            android:layerType="software"
-            app:item_margin="20dp"
-            app:marginLeft="40dp"
-            app:marginRight="40dp"
-            app:point_gravity="bottom_center" />
+    <kevinmob.banner.BannerViewPager
+        android:id="@+id/bvp"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:layerType="software"
+        app:item_margin="20dp"
+        app:marginLeft="40dp"
+        app:marginRight="40dp"
+        app:point_gravity="bottom_center" />
     </FrameLayout>
 ```
 
 ### 2.在java中设置数据
 ```java
     bannerViewPager = (BannerViewPager) findViewById(R.id.bvp);
-
+	
     BannerAdapter adapter = new BannerAdapter();
     //item需要实现IBannerItem接口
     List<IBannerItem> list = new ArrayList<>();
@@ -94,12 +94,11 @@ Android Studio使用依赖:
         }
     });
 
-     //这里举例为Glide,实际使用时需配合自己项目中的图片加载框架完成图片加载
-     class GlideImageLoader implements ImageLoader {
-            @Override
-            public void onDisplayImage(Context context, ImageView imageView, String url) {
-                Glide.with(context).load(url)
-                        .into(imageView);
-            }
+    //这里举例为Glide,实际使用时需配合自己项目中的图片加载框架完成图片加载
+    class GlideImageLoader implements ImageLoader {
+        @Override
+        public void onDisplayImage(Context context, ImageView imageView, String url) {
+        Glide.with(context).load(url).into(imageView);
         }
+    }
 ```
