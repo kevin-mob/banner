@@ -6,7 +6,7 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 11
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -34,7 +34,7 @@ dependencies {
 publish {
     userOrg = 'keviny-mob'
     groupId = 'keviny-mob'
-    artifactId = 'android_library'
+    artifactId = 'banner'
     publishVersion = '1.0.0'
     desc = 'android banner view'
     website = 'https://github.com/kevin-mob/banner'
