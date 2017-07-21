@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BannerViewPager">
+        <attr name="marginLeft" format="dimension|reference" />
+        <attr name="marginRight" format="dimension|reference" />
+        <attr name="item_margin" format="dimension|reference" />
+        <attr name="around_visible" format="boolean"/>
+        <attr name="point_drawable" format="reference"/>
+        <attr name="point_gravity" format="enum">
+            <enum name="bottom_left" value="1"/>
+            <enum name="bottom_right" value="2" />
+            <enum name="bottom_center" value="4" />
+        </attr>
+    </declare-styleable>
+</resources>
