@@ -6,7 +6,7 @@
 ## 1.用法
 Android Studio使用依赖:
 ```java
-compile 'keviny-mob:banner:1.0.0'
+compile 'cn.kevin:banner:1.0.0'
 ```
 或者下载工程后使用
 ```java
