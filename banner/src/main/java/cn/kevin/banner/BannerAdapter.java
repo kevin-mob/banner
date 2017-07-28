@@ -1,4 +1,4 @@
-package kevinmob.banner;
+package cn.kevin.banner;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -22,6 +22,7 @@ public class BannerAdapter extends PagerAdapter {
 
     public void setData(Context context, List<? extends IBannerItem> items){
         int count = items.size();
+        itemList.clear();
         itemList.addAll(items);
         while (itemList.size() < 6){
             IBannerItem item = itemList.get(itemList.size() % count);
@@ -31,6 +32,7 @@ public class BannerAdapter extends PagerAdapter {
     }
 
     private void createImageView(Context context, List<? extends IBannerItem> items) {
+        imageViews.clear();
         for (int i = 0; i < items.size(); i ++){
             ImageView itemView = new ImageView(context);
             itemView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -66,10 +68,7 @@ public class BannerAdapter extends PagerAdapter {
     }
 
     @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        position = getRealPosition(position);
-        container.removeView(imageViews.get(position));
-    }
+    public void destroyItem(ViewGroup container, int position, Object object) {}
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {

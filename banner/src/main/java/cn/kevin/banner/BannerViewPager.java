@@ -1,4 +1,4 @@
-package kevinmob.banner;
+package cn.kevin.banner;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -35,7 +35,7 @@ public class BannerViewPager extends FrameLayout implements ViewPager.OnPageChan
     boolean isFastScroll;
     private BannerAdapter adapter;
     private ImageView currentIndex;
-    private IBannerItemClick bannerItemClick;
+    private OnBannerItemClick bannerItemClick;
     private Runnable runnable;
     private int leftMargin;
     private int rightMargin;
@@ -73,14 +73,25 @@ public class BannerViewPager extends FrameLayout implements ViewPager.OnPageChan
 
     public void setBannerAdapter(BannerAdapter adapter){
         this.adapter = adapter;
-        viewPager.setAdapter(adapter);
         fillPageIndex();
-        int firstPosition = Integer.MAX_VALUE / 2 - ((Integer.MAX_VALUE / 2) % adapter.getRealCount());
-        viewPager.setCurrentItem(firstPosition);
+        //int firstPosition = Integer.MAX_VALUE / 2 - ((Integer.MAX_VALUE / 2) % adapter.getRealCount());
+        viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(2);
+        viewPager.setCurrentItem(adapter.getRealCount() * 50);
     }
 
-    public void setBannerItemClick(IBannerItemClick itemClick){
+    public void setMargin(int leftMargin, int topMargin, int rightMargin, int bottomMargin){
+        FrameLayout.LayoutParams vpLayoutParams = (LayoutParams) viewPager.getLayoutParams();
+        vpLayoutParams.leftMargin = leftMargin;
+        vpLayoutParams.rightMargin = rightMargin;
+        viewPager.requestLayout();
+    }
+
+    public void setItemMargin(int itemMargin){
+        viewPager.setPageMargin(itemMargin);
+    }
+
+    public void setBannerItemClick(OnBannerItemClick itemClick){
         bannerItemClick = itemClick;
     }
 
@@ -210,7 +221,7 @@ public class BannerViewPager extends FrameLayout implements ViewPager.OnPageChan
 
     }
 
-    public interface IBannerItemClick{
+    public interface OnBannerItemClick {
         void onClick(IBannerItem data);
     }
 

@@ -1,4 +1,4 @@
-package kevinmob.banner;
+package cn.kevin.banner;
 
 /**
  * 创建日期：2017/7/18.

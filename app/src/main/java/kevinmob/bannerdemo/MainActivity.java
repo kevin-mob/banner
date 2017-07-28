@@ -7,8 +7,8 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -19,15 +19,14 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapResource;
-import com.bumptech.glide.load.resource.bitmap.TransformationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import kevinmob.banner.BannerAdapter;
-import kevinmob.banner.BannerViewPager;
-import kevinmob.banner.IBannerItem;
-import kevinmob.banner.ImageLoader;
+import cn.kevin.banner.BannerAdapter;
+import cn.kevin.banner.BannerViewPager;
+import cn.kevin.banner.IBannerItem;
+import cn.kevin.banner.ImageLoader;
 
 public class MainActivity extends AppCompatActivity {
     BannerViewPager bannerViewPager;
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.setData(this, list);
         adapter.setImageLoader(new GlideImageLoader());
         bannerViewPager.setBannerAdapter(adapter);
-        bannerViewPager.setBannerItemClick(new BannerViewPager.IBannerItemClick() {
+        bannerViewPager.setBannerItemClick(new BannerViewPager.OnBannerItemClick() {
             @Override
             public void onClick(IBannerItem data) {
                 Toast.makeText(MainActivity.this, " data.ImageUrl() " + data.ImageUrl(), Toast.LENGTH_SHORT).show();

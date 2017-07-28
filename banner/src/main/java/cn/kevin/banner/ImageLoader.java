@@ -1,4 +1,4 @@
-package kevinmob.banner;
+package cn.kevin.banner;
 
 import android.content.Context;
 import android.widget.ImageView;

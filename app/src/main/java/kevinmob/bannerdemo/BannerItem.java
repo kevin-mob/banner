@@ -1,6 +1,7 @@
 package kevinmob.bannerdemo;
 
-import kevinmob.banner.IBannerItem;
+
+import cn.kevin.banner.IBannerItem;
 
 /**
  * 创建日期：2017/7/18.

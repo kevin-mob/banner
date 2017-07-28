@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <kevinmob.banner.BannerViewPager
+    <cn.kevin.banner.BannerViewPager
         android:id="@+id/bvp"
         android:layout_width="match_parent"
         android:layout_height="120dp"

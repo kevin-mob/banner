@@ -30,3 +30,13 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
 }
+
+
+publish {
+    userOrg = 'keviny-mob'
+    groupId = 'cn.kevin'
+    artifactId = 'bannerview'
+    publishVersion = '1.0.0'
+    desc = 'android banner view'
+    website = 'https://github.com/kevin-mob/banner'
+}
