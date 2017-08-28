@@ -1,6 +1,11 @@
 # BannerViewPager
+[![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Download](https://api.bintray.com/packages/keviny-mob/maven/bannerview/images/download.svg) ](https://bintray.com/keviny-mob/maven/bannerview/_latestVersion)
 
 轮播图控件
+
+## 预览
+![](demo.gif)
 
 
 ## 1.用法

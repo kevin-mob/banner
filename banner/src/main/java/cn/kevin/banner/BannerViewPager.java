@@ -74,10 +74,10 @@ public class BannerViewPager extends FrameLayout implements ViewPager.OnPageChan
     public void setBannerAdapter(BannerAdapter adapter){
         this.adapter = adapter;
         fillPageIndex();
-        //int firstPosition = Integer.MAX_VALUE / 2 - ((Integer.MAX_VALUE / 2) % adapter.getRealCount());
+        //int firstPosition = Integer.MAX_VALUE / 2 - ((Integer.MAX_VALUE / 2) % adapter.getItemCount());
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(2);
-        viewPager.setCurrentItem(adapter.getRealCount() * 50);
+        viewPager.setCurrentItem(adapter.getItemCount() * 50);
     }
 
     public void setMargin(int leftMargin, int topMargin, int rightMargin, int bottomMargin){
@@ -99,7 +99,7 @@ public class BannerViewPager extends FrameLayout implements ViewPager.OnPageChan
         if (pageIndexContainer.getChildCount() > 0) {
             pageIndexContainer.removeAllViews();
         }
-        int size = adapter.getRealCount();
+        int size = adapter.getIndexCount();
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
         int margin = (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2,
@@ -208,7 +208,7 @@ public class BannerViewPager extends FrameLayout implements ViewPager.OnPageChan
     }
 
     private void changePageIndex(int position) {
-        int realPosition = adapter.getRealPosition(position);
+        int realPosition = adapter.getIndexPosition(position);
         if(currentIndex != null){
             currentIndex.setSelected(false);
         }

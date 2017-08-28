@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
         list.add(new BannerItem("http://img.mukewang.com/5970589100012c0107500250.jpg"));
         list.add(new BannerItem("http://img.mukewang.com/596da0790001dee207500250.jpg"));
         list.add(new BannerItem("http://img.mukewang.com/5965c6350001556207500250.jpg"));
-        list.add(new BannerItem("http://img.mukewang.com/59658a5400011c3007500250.jpg"));
-        list.add(new BannerItem("http://img.mukewang.com/5962dfbc0001c8bb07500250.jpg"));
         adapter.setData(this, list);
         adapter.setImageLoader(new GlideImageLoader());
         bannerViewPager.setBannerAdapter(adapter);
@@ -124,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public String getId() {
-            return "CropRoundTransFormation()";
+            return "CropRoundTransFormation()" + mRadius;
         }
     }
 }

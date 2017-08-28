@@ -7,7 +7,7 @@
     <cn.kevin.banner.BannerViewPager
         android:id="@+id/bvp"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:layout_marginTop="30dp"
         app:item_margin="20dp"
         app:marginLeft="40dp"

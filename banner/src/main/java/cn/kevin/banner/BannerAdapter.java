@@ -19,14 +19,14 @@ public class BannerAdapter extends PagerAdapter {
     private List<IBannerItem> itemList = new ArrayList<>();
     private List<ImageView> imageViews = new ArrayList<>();
     private ImageLoader imageLoader;
+    private int indexCount;
+    private static final int MIN_ITEM_COUNT = 6;
 
     public void setData(Context context, List<? extends IBannerItem> items){
-        int count = items.size();
+        indexCount = items.size();
         itemList.clear();
-        itemList.addAll(items);
-        while (itemList.size() < 6){
-            IBannerItem item = itemList.get(itemList.size() % count);
-            itemList.add(item);
+        while(itemList.size() < MIN_ITEM_COUNT){
+            itemList.addAll(items);
         }
         createImageView(context, itemList);
     }
@@ -48,8 +48,16 @@ public class BannerAdapter extends PagerAdapter {
         return itemList.get(getRealPosition(position));
     }
 
-    int getRealCount(){
+    int getItemCount(){
         return itemList.size();
+    }
+
+    public int getIndexCount(){
+        return indexCount;
+    }
+
+    int getIndexPosition(int position){
+        return position % getIndexCount();
     }
 
     int getRealPosition(int position){
