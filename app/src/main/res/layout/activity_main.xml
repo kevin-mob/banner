@@ -12,5 +12,5 @@
         app:item_margin="20dp"
         app:marginLeft="40dp"
         app:marginRight="40dp"
-        app:point_gravity="bottom_center" />
+        app:point_gravity="bottom_center"/>
 </FrameLayout>

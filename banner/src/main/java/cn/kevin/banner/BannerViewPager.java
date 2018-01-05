@@ -33,7 +33,7 @@ public class BannerViewPager extends FrameLayout implements ViewPager.OnPageChan
     private GestureDetector gestureDetector;
     boolean isScroll;
     boolean isFastScroll;
-    private BannerAdapter adapter;
+    private BaseViewAdapter adapter;
     private ImageView currentIndex;
     private OnBannerItemClick bannerItemClick;
     private Runnable runnable;
@@ -43,6 +43,7 @@ public class BannerViewPager extends FrameLayout implements ViewPager.OnPageChan
     private int pageIndexDrawableResId;
     private int pageIndexGravity;
     private boolean isShowAround;
+    private boolean isAutoScroll;
     public BannerViewPager(Context context) {
         super(context);
         initBannerView();
@@ -68,16 +69,17 @@ public class BannerViewPager extends FrameLayout implements ViewPager.OnPageChan
         isShowAround = ta.getBoolean(R.styleable.BannerViewPager_around_visible, true);
         pageIndexDrawableResId = ta.getResourceId(R.styleable.BannerViewPager_point_drawable, 0);
         pageIndexGravity = ta.getInt(R.styleable.BannerViewPager_point_gravity, 4);
+        isAutoScroll = ta.getBoolean(R.styleable.BannerViewPager_auto_scroll, true);
         ta.recycle();
     }
 
-    public void setBannerAdapter(BannerAdapter adapter){
+    public void setBannerAdapter(BaseViewAdapter adapter){
         this.adapter = adapter;
         fillPageIndex();
         //int firstPosition = Integer.MAX_VALUE / 2 - ((Integer.MAX_VALUE / 2) % adapter.getItemCount());
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(2);
-        viewPager.setCurrentItem(adapter.getItemCount() * 50);
+        viewPager.setCurrentItem(adapter.getCount() != adapter.getIndexCount() ? adapter.getIndexCount() * 50 : 0);
     }
 
     public void setMargin(int leftMargin, int topMargin, int rightMargin, int bottomMargin){
@@ -197,6 +199,15 @@ public class BannerViewPager extends FrameLayout implements ViewPager.OnPageChan
     }
 
     @Override
+    public boolean postDelayed(Runnable action, long delayMillis) {
+        if (isAutoScroll) {
+            return super.postDelayed(action, delayMillis);
+        } else {
+            return false;
+        }
+    }
+
+    @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
     @Override
@@ -221,8 +232,8 @@ public class BannerViewPager extends FrameLayout implements ViewPager.OnPageChan
 
     }
 
-    public interface OnBannerItemClick {
-        void onClick(IBannerItem data);
+    public interface OnBannerItemClick<T> {
+        void onClick(T data);
     }
 
     private final class BannerGestureListener extends GestureDetector.SimpleOnGestureListener {

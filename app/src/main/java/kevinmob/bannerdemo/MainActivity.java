@@ -23,10 +23,10 @@ import com.bumptech.glide.load.resource.bitmap.BitmapResource;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.kevin.banner.BannerAdapter;
 import cn.kevin.banner.BannerViewPager;
 import cn.kevin.banner.IBannerItem;
 import cn.kevin.banner.ImageLoader;
+import cn.kevin.banner.BannerAdapter;
 
 public class MainActivity extends AppCompatActivity {
     BannerViewPager bannerViewPager;
@@ -35,16 +35,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bannerViewPager = (BannerViewPager) findViewById(R.id.bvp);
-        BannerAdapter adapter = new BannerAdapter();
-        List<BannerItem> list = new ArrayList<>();
-        list.add(new BannerItem("http://img.mukewang.com/597058780001221707500250.jpg"));
-        list.add(new BannerItem("http://img.mukewang.com/5970589100012c0107500250.jpg"));
-        list.add(new BannerItem("http://img.mukewang.com/596da0790001dee207500250.jpg"));
-        list.add(new BannerItem("http://img.mukewang.com/5965c6350001556207500250.jpg"));
+        BannerAdapter adapter = new BannerAdapter(new GlideImageLoader());
+        List<IBannerItem> list = new ArrayList<>();
+        list.add(new BannerItem("https://cdn.pixabay.com/photo/2017/12/10/20/56/feather-3010848_1280.jpg"));
+        list.add(new BannerItem("https://cdn.pixabay.com/photo/2016/06/15/01/21/strauss-spring-1458012_1280.jpg"));
+        list.add(new BannerItem("https://cdn.pixabay.com/photo/2016/08/16/16/15/feather-1598302_1280.jpg"));
+        list.add(new BannerItem("https://cdn.pixabay.com/photo/2016/08/16/16/19/feather-1598311_1280.jpg"));
         adapter.setData(this, list);
-        adapter.setImageLoader(new GlideImageLoader());
         bannerViewPager.setBannerAdapter(adapter);
-        bannerViewPager.setBannerItemClick(new BannerViewPager.OnBannerItemClick() {
+        bannerViewPager.setBannerItemClick(new BannerViewPager.OnBannerItemClick<IBannerItem>() {
             @Override
             public void onClick(IBannerItem data) {
                 Toast.makeText(MainActivity.this, " data.ImageUrl() " + data.ImageUrl(), Toast.LENGTH_SHORT).show();
