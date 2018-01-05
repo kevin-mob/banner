@@ -11,5 +11,6 @@
             <enum name="bottom_right" value="2" />
             <enum name="bottom_center" value="4" />
         </attr>
+        <attr name="auto_scroll" format="boolean" />
     </declare-styleable>
 </resources>
