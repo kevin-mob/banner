@@ -12,7 +12,7 @@ import java.util.List;
 /**
  *
  * @author like
- * @date 2018/1/5
+ * date 2018/1/5
  */
 public abstract class BaseViewAdapter<T> extends PagerAdapter {
 

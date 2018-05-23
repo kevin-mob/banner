@@ -89,6 +89,10 @@ public class BannerViewPager extends FrameLayout implements ViewPager.OnPageChan
         viewPager.requestLayout();
     }
 
+    public void setPageTransformer(boolean reverseDrawingOrder, ViewPager.PageTransformer transformer){
+        viewPager.setPageTransformer(reverseDrawingOrder, transformer);
+    }
+
     public void setItemMargin(int itemMargin){
         viewPager.setPageMargin(itemMargin);
     }

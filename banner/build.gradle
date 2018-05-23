@@ -36,7 +36,7 @@ publish {
     userOrg = 'keviny-mob'
     groupId = 'cn.kevin'
     artifactId = 'bannerview'
-    publishVersion = '1.0.1'
+    publishVersion = '1.0.5'
     desc = 'android banner view'
     website = 'https://github.com/kevin-mob/banner'
 }

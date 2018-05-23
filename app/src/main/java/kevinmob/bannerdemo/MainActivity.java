@@ -8,8 +8,10 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -49,6 +51,30 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, " data.ImageUrl() " + data.ImageUrl(), Toast.LENGTH_SHORT).show();
             }
         });
+        bannerViewPager.setPageTransformer(true, new ViewPager.PageTransformer() {
+            float MIN_SCALE = .8f;
+            @Override
+            public void transformPage(View page, float position) {
+                System.out.println("transformPage position " + position);
+                if (position < -1) {//看不到的一页 *
+                    //page.setScaleX(MIN_SCALE);
+                    page.setScaleY(MIN_SCALE);
+                } else if (position < 0) {//滑出的页 0.0 ~ -1 *
+                    float scaleFactor = (1 - MIN_SCALE) * (0 - position);
+                    //page.setScaleX(1 - scaleFactor);
+                    page.setScaleY(1 - scaleFactor);
+                } else if(position <= 1 ){//滑进的页 1 ~ 0.0 *
+                    float scaleFactor = (1 - MIN_SCALE) * (1 - position);
+                    //page.setScaleX(MIN_SCALE + scaleFactor);
+                    page.setScaleY(MIN_SCALE + scaleFactor);
+                } else {//看不到的另一页 *
+                    //page.setScaleX(MIN_SCALE);
+                    page.setScaleY(MIN_SCALE);
+                }
+            }
+        });
+
+
     }
 
     class GlideImageLoader implements ImageLoader {
@@ -56,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         public void onDisplayImage(Context context, ImageView imageView, String url) {
             Glide.with(context).load(url)//
                     .bitmapTransform(new CropRoundTransFormation(MainActivity.this, dp2px(4)))
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)//
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)//
                     .into(imageView);
         }
     }
