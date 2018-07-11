@@ -20,6 +20,7 @@ public abstract class BaseViewAdapter<T> extends PagerAdapter {
     private List<View> views = new ArrayList<>();
     private int indexCount;
     private static final int MIN_ITEM_COUNT = 6;
+    private boolean isAutoFill = true;
 
     public void setData(Context context, List<T> items){
         indexCount = items.size();
@@ -73,7 +74,11 @@ public abstract class BaseViewAdapter<T> extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return Integer.MAX_VALUE;
+        return !isAutoFill && getIndexCount() == 1 ? getIndexCount() : Integer.MAX_VALUE;
+    }
+
+    public void setAutoFill(boolean isAutoFill){
+        this.isAutoFill = isAutoFill;
     }
 
     @Override

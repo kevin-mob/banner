@@ -10,6 +10,7 @@
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
         app:item_margin="20dp"
+        app:around_visible="false"
         app:marginLeft="40dp"
         app:marginRight="40dp"
         app:point_gravity="bottom_center"/>

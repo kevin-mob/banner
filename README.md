@@ -11,7 +11,7 @@
 ## 1.用法
 Android Studio使用依赖:
 ```java
-compile 'cn.kevin:bannerview:1.0.6'
+compile 'cn.kevin:bannerview:1.0.8'
 ```
 或者下载工程后使用
 ```java

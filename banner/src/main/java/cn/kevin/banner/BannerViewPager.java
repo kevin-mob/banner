@@ -77,6 +77,7 @@ public class BannerViewPager extends FrameLayout implements ViewPager.OnPageChan
         this.adapter = adapter;
         fillPageIndex();
         //int firstPosition = Integer.MAX_VALUE / 2 - ((Integer.MAX_VALUE / 2) % adapter.getItemCount());
+        adapter.setAutoFill(isShowAround);
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(2);
         viewPager.setCurrentItem(adapter.getCount() != adapter.getIndexCount() ? adapter.getIndexCount() * 50 : 0);
